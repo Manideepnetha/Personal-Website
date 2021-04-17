@@ -13,8 +13,37 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+        <script>
+          function sendmail(){
+            var name = $('#Name').val();
+            var email = $('#Email').val();
+            var subject = $('#Subject').val();
+            var message = $('#Message').val()
+            var Body='Name: '+name+'<br>Email: '+email+'<br>Subject: '+subject+'<br>Message: '+message+'<br>';
+            Email.send({
+              SecureToken:"fbf31702-bb7f-4a4e-9c1c-4ccf17ee777f",
+              To: "manideepnetha24@msitprogram.net",
+              From: email,
+              Subject: "A new message from "+name+" through your website",
+              Body: Body
+            }).then(
+              message =>{
+                if(message=='OK'){
+                alert('Your mail has been send. Thank you for connecting.');
+                }
+                else{
+                  console.error (message);
+                  alert('There is error at sending message. ')
+                }
+              }
+            );
+          }
+        </script>
+     
 </head>
 <body>
     <div class="scroll-up-btn">
@@ -218,6 +247,8 @@
         </div>
     </section>
 
+    
+    
     <!-- contact section start -->
     <section class="contact" id="contact">
         <div class="max-width">
@@ -252,36 +283,44 @@
                 </div>
                 <div class="column right">
                     <div class="text">Message me</div>
-                    <form action="#">
+                    <form action="javascript:sendmail()" method="post">
                         <div class="fields">
+
                             <div class="field name">
-                                <input type="text" placeholder="Name" required>
+                                <input type="text" id="Name" placeholder="Name" required>
                             </div>
                             <div class="field email">
-                                <input type="email" placeholder="Email" required>
+                                <input type="email" id="Email" placeholder="Email" required>
                             </div>
                         </div>
                         <div class="field">
-                            <input type="text" placeholder="Subject" required>
+                            <input type="text" id = "Subject" placeholder="Subject" required>
                         </div>
                         <div class="field textarea">
-                            <textarea cols="30" rows="10" placeholder="Message.." required></textarea>
+                            <textarea cols="30" rows="10" id="Message" placeholder="Message.." required></textarea>
                         </div>
                         <div class="button">
-                            <a href = "mailto: manideepnetha24@gmail.com"><button type="submit">Send message</button></a>
+                            <button type="submit" class="btn btn-contact">Send message</button></a>
 
                         </div>
+
                     </form>
+                    
                 </div>
             </div>
         </div>
+
     </section>
+
+   
+       
 
     <!-- footer section start -->
     <footer>
-        <span>Created By <a href="https://www.codingnepalweb.com">Manideep Netha J</a></span>
+        <span>Created By <a href="">Manideep Netha J</a></span>
     </footer>
 
     <script src="script.js"></script>
+
 </body>
 </html>
